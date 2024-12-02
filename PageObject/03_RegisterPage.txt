@@ -1,0 +1,100 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+
+# TODO: Write Documentation e.g. User Registration Test scenario with verification, valid and invalid credentials.
+
+Documentation	Testing the Register functionality. Register Test scenario with valid and invalid inputs.
+
+Pre Condition	Open Browser
+Post Condition	Registeration has been done successfully
+Tags	Register, TS-1-Register 
+
+# TODO: Write Precondition, Postcondition, Tags
+
+Pre Condition	Open Browser
+Post Condition	Close All Browsers
+Tags	Register, TS-1-Register 
+
+#******************* Common Variables ********************
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+# Here Test Data defined as a Variable for easy access
+
+SignUpUrl= https://gitlab.com/users/sign_up
+FirstNAme=
+LastName=
+email=
+UserName= XYZ
+Password= ***
+Invalid_email=
+Invalid_FirstName= XYZZZ
+Invalid_LastName=
+Invalid_Password= ******
+Empty= 
+
+
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive and Negative Test Cases and Test Process steps (Think about possible test cases)
+
+# Positive Test examples are below write test process steps for each below test case
+
+*** Test Cases ***
+
+# Positive Tests
+
+Login With Valid Input
+    Navigate To Sign Up Page SignUpUrl
+	Input FirstName
+	Input LastName
+	Input email
+    Input Username  UserName
+    Input Password  Password
+    Submit Sign Up Form
+    Verify Page Should Contain email verify Page
+
+# Negative Test examples keywords are below write test process steps for each below test case
+
+Login With invalid Input
+    Navigate To Sign Up Page SignUpUrl
+	Input FirstName
+	Input LastName
+	Input Invalid_email
+    Input Username  UserName
+    Input Password  Password
+    Submit Sign Up Form
+    Verify That Error message should show Please provide a valid email address
+
+Error message Should Be Visible After invalid register input empty Password
+    Navigate To Sign Up Page SignUpUrl
+	Input FirstName
+	Input LastName
+	Input email
+    Input Username  UserName
+    Input Password  Empty
+    Submit Sign Up Form
+    Verify That Error message should show Minimum length is 8 characters
+
+Error message Should Be Visible After invalid register input Username already taken
+    Navigate To Sign Up Page SignUpUrl
+	Input FirstName
+	Input LastName
+	Input email
+    Input Username  UserName
+    Input Password  Password
+    Submit Sign Up Form
+    Verify That Error message should show Username is already taken
+
+	Register user with same above username,
+		...empty password,
+		...invalid email,
+		...Without recaptcha,
+
+

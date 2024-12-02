@@ -1,0 +1,66 @@
+
+#******************** Settings ************************
+
+*** Settings ***
+Documentation	Issue Test scenario. CRUD Operation: Create, Read, Update, Delete
+
+# TODO: Write Precondition and Postcondition, Tags 
+
+Pre Condition	Project has been successfully created 
+Post Condition	Issue has been successfully created
+Tags Creating Issue, TS-1-Creating_Issue
+
+#******************* Common Variables ********************
+
+
+*** Variables ***
+
+# NOTE: Please Remove your login credential before uploading Assignments
+
+# TODO: Write Issue creation field variables, Updated name of the issue
+
+UserName= UserName
+Issue Title= IssueName
+Issue Title2= IssueName2
+
+#******************** Test Cases *************************
+
+*** Test Case ***
+
+# TODO: Write Positive Test Cases and Test Process steps
+
+# Positive Test examples are below write test process steps for each below test case
+
+	Create issue
+	Click ProjectName
+	Click issue on navigation
+	Click New issue button
+	Input issue Title IssueName
+	Click Create issue button
+	Verify that message should say Issue created just now by UserName
+
+ 	Update name of issue 
+	Click ProjectName
+	Click issue on navigation
+	Click IssueName
+	Click edit button
+	Input new Issue Title IssueName2
+	Click Save changes button
+	Verify that Issue Title is updated
+
+	Create second issue with previous updated name
+	Click ProjectName
+	Click issue on navigation
+	Click New issue button
+	Input issue Title IssueName
+	Click Create issue button
+	Verify that message should say Issue created just now by UserName
+
+    Delete first issue
+	Click ProjectName
+	Click issue on navigation
+	Click IssueName
+	Click Delete issue
+	Click Delete issue button
+	Verify that message should say The issue was successfully deleted
+
